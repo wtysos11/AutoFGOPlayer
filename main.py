@@ -3,7 +3,7 @@ import pyautogui
 import os
 import time
 
-#os.chdir('E:\\code\\myRepository\\AutoFGOPlayer')
+os.chdir('E:\\code\\myRepository\\AutoFGOPlayer')
 from autoPlayer import *
 AvailableRegion = (44,29,1791,1009)
 pyautogui.PAUSE = 1
@@ -21,6 +21,8 @@ print("Pass")
 player.findAddServant()
 player.beginMission()
 #通过选人界面，进入第一面
+while not player.checkBattleAvailable():
+    time.sleep(1)
 
 #通过选人界面，进入第二面
 

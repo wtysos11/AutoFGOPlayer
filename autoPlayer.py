@@ -1,6 +1,7 @@
 import pyautogui
 from PIL import Image
 import time
+import pyscreeze
 #常量，用于参数指定的修正
 originXL = 44
 originXR = 1835
@@ -78,23 +79,19 @@ class autoPlayer:
         '''
 
         #截取指定区域
-        print("Find servent")
-        re = pyautogui.screenshot(region = (110,427,336-110,552-427))
-        aim = Image.open('aimServent.png')
-        result = self.findInImage(aim,re)
-        count = 0
-        while result is None:
-            #单次移动
-            print("Move once")
-            pyautogui.moveTo(115,767)
-            pyautogui.drag(0,-248,1.5,button = 'left')
-            re = pyautogui.screenshot(region = (110,427,336-110,552-427))
-            result = self.findInImage(aim,re)
-            count += 1
-            if count>4:
-                return False
-        
-        self.clickFirstServent()
+        out = False
+        counting = 0
+        while not out:
+            try:
+                pyautogui.click('aimServent.png')
+                out = True
+            except pyscreeze.ImageNotFoundException:
+                pyautogui.moveTo(115,767)
+                pyautogui.drag(0,-248*2,1.5,button = 'left')
+                counting += 1
+                if counting > 5:
+                    return False
+
         return True
     
     def clickFirstServent(self):
@@ -102,3 +99,90 @@ class autoPlayer:
     
     def beginMission(self):
         pyautogui.click(1703,973)
+
+    def checkBattleAvailable(self):
+        try:
+            location = pyautogui.locateOnScreen('battleAvailable.png')
+            return True
+        except:
+            return False
+
+    def chooseServentSkill(self,serventNum,skillNum):
+        '''
+        点击第几号位的从者（0,1,2）
+        第几个技能（0,1,2)
+        '''
+        serventDistance = 446
+        skillDistance = 131
+        baseX = 136 #第0号从者，第0号技能
+        baseY = 833
+
+        realX = baseX + serventDistance * serventNum + skillDistance * skillNum
+        pyautogui.click(realX,baseY)
+
+    def chooseEnemy(self,enemyNum):
+        '''
+        点击第几号位的敌人，从0开始计数
+        '''
+        enemyDistance = 342
+        baseX = 107
+        baseY = 89
+        realX = baseX = enemyDistance*enemyNum
+        pyautogui.click(realX,baseY)
+
+    def InBattle(self):
+        pyautogui.click(1637,866)
+
+    def InBattleAttack(self,attackNum):
+        '''
+        普通攻击，从0开始，attackNum表示攻击卡的位置
+        '''
+        attackDistance = 359
+        baseX = 205
+        baseY = 741
+        realX = baseX + attackNum*attackDistance
+        pyautogui.click(realX,baseY)
+
+    def InBattlePhantasm(self,phantasmNum):
+        '''
+        宝具，从0开始
+        '''
+        phantasmDistance = 324
+        baseX = 623
+        baseY = 315
+        realX = baseX + phantasmNum * phantasmDistance
+        pyautogui.click(realX,baseY)
+    
+    def masterSkill(self,skillNum):
+        '''
+        发动御主礼装技能，从0开始
+        '''
+        pyautogui.click(1715,476)
+        baseX = 1313
+        baseY = 464
+        skillDistance = 125
+        realX = baseX + skillNum * skillDistance
+        pyautogui.click(realX,baseY)#选择技能
+        pyautogui.click(1175,623)#确认
+
+    def changePeopleSkill(self,start,sub):
+        '''
+        换人礼装
+        '''
+        baseX = 234
+        baseY = 525
+        peopleDistance = 276
+        realX = baseX + start * peopleDistance
+        pyautogui.click(realX,baseY)
+
+        realX = baseX + sub * peopleDistance
+        pyautogui.click(realX,baseY)
+
+        pyautogui.click(970,901)
+
+    def checkEndFirst(self):
+        try:
+            ans = pyautogui.locateOnScreen('resultPage1.png')
+            return True
+        except:
+            return False
