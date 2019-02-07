@@ -3,10 +3,9 @@ import pyautogui
 import os
 import time
 
-os.chdir('E:\\code\\myRepository\\AutoFGOPlayer')
 from autoPlayer import *
 AvailableRegion = (44,29,1791,1009)
-pyautogui.PAUSE = 1
+pyautogui.PAUSE = 3
 
 player = autoPlayer((44,29),(1835,1038))
 #点击外层关卡
@@ -18,14 +17,46 @@ while not player.checkChooseHelp():
     time.sleep(1)
 
 print("Pass")
-player.findAddServant()
+#player.findAddServant()
+pyautogui.click(440,409)
 player.beginMission()
 #通过选人界面，进入第一面
 while not player.checkBattleAvailable():
     time.sleep(1)
 
+time.sleep(3)
+player.chooseServentSkill(0,0)
+player.InBattle()
+player.InBattlePhantasm(0)
+player.InBattleAttack(0)
+player.InBattleAttack(1)
+
 #通过选人界面，进入第二面
+while not player.checkBattleAvailable():
+    time.sleep(1)
 
+time.sleep(3)
+player.chooseServentSkill(1,1)
+player.InBattle()
+player.InBattlePhantasm(1)
+player.InBattleAttack(0)
+player.InBattleAttack(1)
 #通过选人界面，进入第三面
+while not player.checkBattleAvailable():
+    time.sleep(1)
 
+time.sleep(3)
+player.chooseServentSkill(2,1)
+player.InBattle()
+player.InBattlePhantasm(2)
+player.InBattleAttack(0)
+player.InBattleAttack(1)
+time.sleep(30)
 #第三面结束，进入结算界面
+pyautogui.PAUSE = 1.5
+pyautogui.click(1538,958)
+pyautogui.click(1538,958)
+pyautogui.click(1538,958)
+pyautogui.click(1538,958)
+pyautogui.click(1538,958)
+pyautogui.click(1538,958)

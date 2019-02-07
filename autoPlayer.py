@@ -102,7 +102,7 @@ class autoPlayer:
 
     def checkBattleAvailable(self):
         try:
-            location = pyautogui.locateOnScreen('battleAvailable.png')
+            location = pyautogui.locateOnScreen('battleAvailable.png',confidence = 0.9)
             return True
         except:
             return False
