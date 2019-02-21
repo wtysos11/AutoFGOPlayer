@@ -208,3 +208,16 @@ class autoPlayer:
             return True
         except:
             return False
+
+    def checkAP(self):
+        '''
+        如果存在AP回复，则使用第一个回复AP。
+        不然，则无视
+        '''
+        try:
+            location = pyautogui.locateOnScreen('needAP.png',confidence=0.9)
+            pyautogui.click(583,490)    #点击第一个
+            pyautogui.click(1188,824)   #点击确定
+            return True
+        except:
+            return False
