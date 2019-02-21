@@ -103,7 +103,7 @@ class autoPlayer:
 
     def checkBattleAvailable(self):
         try:
-            location = pyautogui.locateOnScreen('battleAvailable.png',confidence = 0.9)
+            location = pyautogui.locateOnScreen('battleAvailable.png',confidence = 0.8)
             return True
         except:
             return False
@@ -149,7 +149,7 @@ class autoPlayer:
         enemyDistance = 342
         baseX = 107
         baseY = 89
-        realX = baseX = enemyDistance*enemyNum
+        realX = baseX + enemyDistance*enemyNum
         pyautogui.click(realX,baseY)
 
     def InBattle(self):
