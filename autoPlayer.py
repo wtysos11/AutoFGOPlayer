@@ -83,7 +83,8 @@ class autoPlayer:
         counting = 0
         while not out:
             try:
-                pyautogui.click('aimServent.png')
+                location = pyautogui.locateOnScreen('aimServent.png',confidence = 0.8)
+                pyautogui.click(pyautogui.center(location))
                 out = True
             except pyscreeze.ImageNotFoundException:
                 pyautogui.moveTo(115,767)
@@ -120,6 +121,27 @@ class autoPlayer:
         realX = baseX + serventDistance * serventNum + skillDistance * skillNum
         pyautogui.click(realX,baseY)
 
+    def chooseServentSkillWithSpecificAim(self,serventNum,skillNum,aimNum):
+        '''
+        点击第几号位的从者（0,1,2）
+        第几个技能（0,1,2)
+        对象编号（0,1,2）
+        '''
+        serventDistance = 446
+        skillDistance = 131
+        baseX = 136 #第0号从者，第0号技能
+        baseY = 833
+
+        realX = baseX + serventDistance * serventNum + skillDistance * skillNum
+        pyautogui.click(realX,baseY)
+
+        baseX = 518 #第0号从者，第0号技能
+        baseY = 673
+        aimDistance = 420
+
+        realX = baseX + aimDistance * aimNum
+        pyautogui.click(realX,baseY)
+
     def chooseEnemy(self,enemyNum):
         '''
         点击第几号位的敌人，从0开始计数
@@ -153,7 +175,7 @@ class autoPlayer:
         realX = baseX + phantasmNum * phantasmDistance
         pyautogui.click(realX,baseY)
     
-    def masterSkill(self,skillNum):
+    def chooseMasterSkill(self,skillNum):
         '''
         发动御主礼装技能，从0开始
         '''
@@ -163,7 +185,7 @@ class autoPlayer:
         skillDistance = 125
         realX = baseX + skillNum * skillDistance
         pyautogui.click(realX,baseY)#选择技能
-        pyautogui.click(1175,623)#确认
+        #pyautogui.click(1175,623)#确认
 
     def changePeopleSkill(self,start,sub):
         '''
