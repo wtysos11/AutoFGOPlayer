@@ -83,7 +83,7 @@ class autoPlayer:
         counting = 0
         while not out:
             try:
-                location = pyautogui.locateOnScreen('aimServent.png',confidence = 0.8)
+                location = pyautogui.locateOnScreen('aimServent.png',confidence = 0.9)
                 pyautogui.click(pyautogui.center(location))
                 out = True
             except pyscreeze.ImageNotFoundException:

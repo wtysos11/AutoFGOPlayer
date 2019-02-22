@@ -42,6 +42,11 @@ for i in range(1000):
     player.InBattleAttack(1)
     pyautogui.PAUSE = 3
     
+    time.sleep(5)
+    pyautogui.click(935,711)
+    pyautogui.click(935,711)
+
+
     #通过选人界面，进入第二面。孔明上场，孔明一二三技能给茶茶，换人礼装换上船长，CEO开一三技能
     while not player.checkBattleAvailable():
         time.sleep(1)
@@ -75,8 +80,9 @@ for i in range(1000):
         while not player.checkBattleAvailable():
             time.sleep(1)
         
+        time.sleep(2)
         try:
-            location = pyautogui.locateOnScreen('battle_check.png')
+            location = pyautogui.locateOnScreen('battle_check.png',confidence = 0.94)
             player.InBattle()
             pyautogui.PAUSE = 0.5
             player.InBattleAttack(0)
@@ -103,25 +109,27 @@ for i in range(1000):
     player.InBattleAttack(0)
     pyautogui.PAUSE = 3
     time.sleep(45)
+    pyautogui.click(935,711)
+    pyautogui.click(935,711)
     #第三面结束，进入结算界面
     # 判断是否进入结算界面，如果没有进入结算界面，循环使用一二三技能直到结束
+    print('Check battle available')
     while player.checkBattleAvailable():
+        print('not available')
+        time.sleep(2)
         player.InBattle()
-        pyautogui.PAUSE = 0.5
+        pyautogui.PAUSE = 1
         player.InBattleAttack(0)
         player.InBattleAttack(1)
         player.InBattleAttack(2)
-        pyautogui.PAUSE = 0.3
+        time.sleep(8)
+        pyautogui.click(935,711)
+        pyautogui.click(935,711)
+        time.sleep(2)
+        pyautogui.click(935,711)
         time.sleep(10)
-        pyautogui.click(967,529)
-        pyautogui.click(967,529)
-        pyautogui.click(967,529)
-        time.sleep(10)
-        pyautogui.click(967,529)
-        pyautogui.click(967,529)
-        pyautogui.click(967,529)
-        time.sleep(5)
     
+    print('available or over')
     pyautogui.PAUSE = 1.5
     pyautogui.click(1538,958)
     pyautogui.click(1538,958)

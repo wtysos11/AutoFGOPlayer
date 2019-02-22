@@ -9,7 +9,7 @@ AvailableRegion = (44,29,1791,1009)
 pyautogui.PAUSE = 1
 
 #抽取奖池的数量，默认奖池没有抽取
-for i in range(3):
+for i in range(6):
     #点击奖池兑换按钮
     pyautogui.click(609,687)
     for j in range(29):
