@@ -43,8 +43,8 @@ for i in range(1000):
     pyautogui.PAUSE = 3
     
     time.sleep(5)
-    pyautogui.click(935,711)
-    pyautogui.click(935,711)
+    pyautogui.click(196,491)
+    pyautogui.click(196,491)
 
 
     #通过选人界面，进入第二面。孔明上场，孔明一二三技能给茶茶，换人礼装换上船长，CEO开一三技能
@@ -59,7 +59,9 @@ for i in range(1000):
     player.chooseServentSkillWithSpecificAim(0,0,1)
 
     player.chooseMasterSkill(2)
+    pyautogui.PAUSE = 1
     player.changePeopleSkill(0,3)
+    pyautogui.PUASE = 5
     time.sleep(2)
 
     player.chooseServentSkill(2,2)
@@ -109,8 +111,8 @@ for i in range(1000):
     player.InBattleAttack(0)
     pyautogui.PAUSE = 3
     time.sleep(45)
-    pyautogui.click(935,711)
-    pyautogui.click(935,711)
+    pyautogui.click(196,491)
+    pyautogui.click(196,491)
     #第三面结束，进入结算界面
     # 判断是否进入结算界面，如果没有进入结算界面，循环使用一二三技能直到结束
     print('Check battle available')
@@ -123,11 +125,11 @@ for i in range(1000):
         player.InBattleAttack(1)
         player.InBattleAttack(2)
         time.sleep(8)
-        pyautogui.click(935,711)
-        pyautogui.click(935,711)
+        pyautogui.click(196,491)
+        pyautogui.click(196,491)
         time.sleep(2)
-        pyautogui.click(935,711)
-        time.sleep(10)
+        pyautogui.click(196,491)
+        time.sleep(5)
     
     print('available or over')
     pyautogui.PAUSE = 1.5
@@ -135,7 +137,5 @@ for i in range(1000):
     pyautogui.click(1538,958)
     pyautogui.click(1538,958)
     time.sleep(3)
-    pyautogui.click(1538,958)
-    pyautogui.click(1538,958)
     pyautogui.click(1538,958)
     time.sleep(15)
