@@ -8,12 +8,12 @@ AvailableRegion = (44,29,1791,1009)
 pyautogui.PAUSE = 3
 
 player = autoPlayer((44,29),(1835,1038))
-for i in range(1000):
-    #赝作，终本刷伪手稿
-    location = pyautogui.locateOnScreen('aim.png',confidence = 0.8)
+for i in range(6):
+    #塞勒姆丘陵，刷钉子
+    location = pyautogui.locateOnScreen('aim.png',confidence = 0.95)
     pyautogui.click(pyautogui.center(location))
     #检查是否需要苹果
-    flag = player.checkAP()
+    #flag = player.checkAP()
     #通过过度界面，进入选人界面
     ## 检查选人界面是否正常
     while not player.checkChooseHelp():
@@ -25,19 +25,17 @@ for i in range(1000):
     time.sleep(2)
     #pyautogui.click(440,409)
     player.beginMission()
-    #通过选人界面，进入第一面。第一面大英雄三技能，CEO二技能，宝具。
+    #通过选人界面，进入第一面。第一面弓凛一技能，弓凛宝具。
     while not player.checkBattleAvailable():
         time.sleep(1)
     
     pyautogui.PAUSE = 5
     time.sleep(3)
-    player.chooseServentSkill(0,2)
     player.chooseServentSkill(2,1)
-    player.chooseServentSkill(2,0)
     time.sleep(2)
     player.InBattle()
     pyautogui.PAUSE = 0.5
-    player.InBattlePhantasm(0)
+    player.InBattlePhantasm(2)
     player.InBattleAttack(0)
     player.InBattleAttack(1)
     pyautogui.PAUSE = 3
@@ -47,25 +45,15 @@ for i in range(1000):
     pyautogui.click(196,491)
 
 
-    #通过选人界面，进入第二面。孔明上场，孔明一二三技能给茶茶，换人礼装换上船长，CEO开一三技能
+    #通过选人界面，进入第二面。豆爸一技能、二技能，弓凛一技能，豆爸宝具。
     while not player.checkBattleAvailable():
         time.sleep(1)
     
     pyautogui.PAUSE = 5
     time.sleep(3)
-
-    player.chooseServentSkill(0,1)
-    player.chooseServentSkill(0,2)
-    player.chooseServentSkillWithSpecificAim(0,0,1)
-
-    player.chooseMasterSkill(2)
-    pyautogui.PAUSE = 1
-    player.changePeopleSkill(0,3)
-    pyautogui.PUASE = 5
-    time.sleep(2)
-
-    player.chooseServentSkill(2,2)
-    time.sleep(1)
+    player.chooseServentSkill(1,0)
+    player.chooseServentSkill(1,1)
+    player.chooseServentSkill(2,0)
     pyautogui.PAUSE = 3
 
     player.InBattle()
@@ -75,13 +63,14 @@ for i in range(1000):
     player.InBattleAttack(1)
     pyautogui.PAUSE = 3
 
-    inBattle3 = False
+    inBattle3 = True
     #检查是否进入第三面
     #通过选人界面，进入第三面。船长一三技能，茶茶三技能，御主礼装一技能。
+    '''
     while not inBattle3:
         while not player.checkBattleAvailable():
             time.sleep(1)
-        
+    
         time.sleep(2)
         try:
             location = pyautogui.locateOnScreen('battle_check.png',confidence = 0.94)
@@ -94,20 +83,27 @@ for i in range(1000):
             continue
         except:
             inBattle3 = True
-    
+    '''
+    while not player.checkBattleAvailable():
+        time.sleep(1)
+
+    print('the third available')    
     time.sleep(3)
-    pyautogui.PAUSE = 5
-    player.chooseEnemy(1)
-    player.chooseServentSkill(0,0)
-    player.chooseServentSkill(0,2)
-    player.chooseServentSkill(1,2)
-    player.chooseMasterSkill(0)
     pyautogui.PAUSE = 3
+    player.chooseMasterSkill(2)
+    player.changePeopleSkill(1,3)
+    player.chooseEnemy(1)
+
+    player.chooseServentSkill(0,0)
+    player.chooseServentSkill(0,1)
+    player.chooseServentSkill(1,0)
+    player.chooseMasterSkill(0)
+    time.sleep(2)
     
     player.InBattle()
     pyautogui.PAUSE = 0.5
     player.InBattlePhantasm(0)
-    player.InBattlePhantasm(2)
+    player.InBattlePhantasm(1)
     player.InBattleAttack(0)
     pyautogui.PAUSE = 3
     time.sleep(45)
@@ -138,4 +134,13 @@ for i in range(1000):
     pyautogui.click(1538,958)
     time.sleep(3)
     pyautogui.click(1538,958)
+    pyautogui.click(1538,958)
     time.sleep(15)
+
+    #检验是否存在申请
+    try:
+        location = pyautogui.locateOnScreen('not_apply.png',confidence = 0.9)
+        pyautogui.click(542,892)
+        time.sleep(15)
+    except:
+        time.sleep(1)
