@@ -26,10 +26,11 @@ for i in range(9):
         time.sleep(1)
     
     time.sleep(3)
-    player.chooseServentSkill(0,0)
+    player.chooseServentSkill(2,0)
+    player.chooseServentSkill(2,1)
     time.sleep(1)
     player.InBattle()
-    player.InBattlePhantasm(0)
+    player.InBattlePhantasm(2)
     player.InBattleAttack(0)
     player.InBattleAttack(1)
     
@@ -38,6 +39,7 @@ for i in range(9):
         time.sleep(1)
     
     time.sleep(3)
+    player.chooseServentSkill(1,0)
     player.chooseServentSkill(1,1)
     time.sleep(1)
     player.InBattle()
@@ -49,13 +51,13 @@ for i in range(9):
         time.sleep(1)
     
     time.sleep(3)
-    player.chooseServentSkill(2,1)
+    player.chooseServentSkill(0,1)
     time.sleep(1)
     player.InBattle()
-    player.InBattlePhantasm(2)
+    player.InBattlePhantasm(0)
     player.InBattleAttack(0)
     player.InBattleAttack(1)
-    time.sleep(50)
+    time.sleep(35)
     #第三面结束，进入结算界面
     pyautogui.PAUSE = 1.5
     pyautogui.click(1538,958)
