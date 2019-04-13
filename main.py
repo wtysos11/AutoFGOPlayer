@@ -10,7 +10,8 @@ pyautogui.PAUSE = 3
 player = autoPlayer((44,29),(1835,1038))
 for i in range(5):
     #赝作，剑本刷手稿。一面大英雄，二面黑杯小黑，三面1宝弓凛+1宝特总
-    pyautogui.click('aim.png')
+    location = pyautogui.locateOnScreen('aim.png',confidence = 0.9)
+    pyautogui.click(pyautogui.center(location))
     #通过过度界面，进入选人界面
     ## 检查选人界面是否正常
     while not player.checkChooseHelp():
