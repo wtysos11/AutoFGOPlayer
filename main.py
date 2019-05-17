@@ -9,7 +9,7 @@ pyautogui.PAUSE = 3
 
 player = autoPlayer((44,29),(1835,1038))
 for i in range(6):
-    #周五，QP之门40AP。使用船长，阿福和金时，礼装为50NP礼装
+    #位置：新宿枪身塔，膛线大厅，45.8AP/个。使用阵容尼托豆爸孔明+三藏。打手使用50NP礼装
     location = pyautogui.locateOnScreen('aim.png',confidence = 0.95)
     pyautogui.click(pyautogui.center(location))
     #检查是否需要苹果
@@ -25,13 +25,13 @@ for i in range(6):
     time.sleep(2)
     #pyautogui.click(440,409)
     player.beginMission()
-    #通过选人界面，进入第一面。第一面阿福三技能
+    #通过选人界面，进入第一面。第一面豆爸一技能，直接开宝具
     while not player.checkBattleAvailable():
         time.sleep(1)
     
     pyautogui.PAUSE = 5
     time.sleep(3)
-    player.chooseServentSkill(1,2)
+    player.chooseServentSkill(1,0)
     time.sleep(2)
     player.InBattle()
     pyautogui.PAUSE = 0.5
@@ -45,27 +45,32 @@ for i in range(6):
     pyautogui.click(196,491)
 
 
-    #第二面，船长一技能，艾什二、三技能
+    #第二面，豆爸换上三藏，孔明技能全部给尼托，尼托宝具
     while not player.checkBattleAvailable():
         time.sleep(1)
     
     pyautogui.PAUSE = 5
     time.sleep(2)
-    player.chooseServentSkill(0,0)
+    #豆爸换三藏
+    player.chooseMasterSkill(2)
+    player.changePeopleSkill(1,3)
+    #孔明技能全部给尼托
+    time.sleep(2)
     player.chooseServentSkill(2,1)
     player.chooseServentSkill(2,2)
+    player.chooseServentSkillWithSpecificAim(2,0,0)
     pyautogui.PAUSE = 3
 
     player.InBattle()
     pyautogui.PAUSE = 0.5
-    player.InBattlePhantasm(2)
+    player.InBattlePhantasm(0)
     player.InBattleAttack(0)
     player.InBattleAttack(1)
     pyautogui.PAUSE = 3
 
     inBattle3 = True
     #检查是否进入第三面
-    #通过选人界面，进入第三面。船长三技能
+    #通过选人界面，进入第三面。尼托一技能、二技能。三藏一技能。选定敌人一，放御主礼装一技能。
     '''
     while not inBattle3:
         while not player.checkBattleAvailable():
@@ -90,16 +95,19 @@ for i in range(6):
     #print('the third available')    
     time.sleep(3)
     pyautogui.PAUSE = 3
-    player.chooseServentSkill(0,2)
-    player.chooseEnemy(1)
+    player.chooseMasterSkill(0)
+    player.chooseEnemy(0)
+    player.chooseServentSkill(0,0)
+    player.chooseServentSkill(0,1)
+    player.chooseServentSkill(1,0)
 
     time.sleep(2)
     
     player.InBattle()
     pyautogui.PAUSE = 0.5
     player.InBattlePhantasm(0)
+    player.InBattlePhantasm(1)
     player.InBattleAttack(0)
-    player.InBattleAttack(1)
     pyautogui.PAUSE = 3
     time.sleep(45)
     pyautogui.click(196,491)
