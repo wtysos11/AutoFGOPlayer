@@ -9,7 +9,7 @@ pyautogui.PAUSE = 3
 
 player = autoPlayer((44,29),(1835,1038))
 for i in range(9):
-    #点击外层关卡。凶骨关卡：第一章冬木x-c大桥
+    #点击外层关卡。凶骨关卡：第一章冬木x-g，15ap一把
     pyautogui.click('aim.png')
     #通过过度界面，进入选人界面
     ## 检查选人界面是否正常
